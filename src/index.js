@@ -3,7 +3,7 @@ const app = express()
 
 app.use(express.json())
 
-// conexão com o banco de dados
+// conexão banco
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config()
 
