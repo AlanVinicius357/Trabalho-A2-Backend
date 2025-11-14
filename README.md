@@ -30,16 +30,16 @@ Padronização de Nomes para Arquivos
     usuarioModel.js
 
 /validators
-    alunoValidatoes.js
-    professorValidatoes.js
-    cursoValidatoes.js
-    turmaValidatoes.js
-    disciplinaValidatoes.js
-    matriculaValidatoes.js
-    notaValidatoes.js
-    frequenciaValidatoes.js
-    departamentoValidatoes.js
-    usuarioValidatoes.js
-    indexValidatoes.js
+    alunoValidators.js
+    professorValidators.js
+    cursoValidators.js
+    turmaValidators.js
+    disciplinaValidators.js
+    matriculaValidators.js
+    notaValidators.js
+    frequenciaValidators.js
+    departamentoValidators.js
+    usuarioValidators.js
+    indexValidators.js
 
 
