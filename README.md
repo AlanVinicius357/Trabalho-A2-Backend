@@ -1,5 +1,7 @@
 # Trabalho-A2-Backend
 Trabalho Prático A2 de disciplina backend
+AlanVinicius
+assaas
 
 Padronização de Nomes para Arquivos
 
@@ -37,4 +39,4 @@ Padronização de Nomes para Arquivos
     frequenciaRoutes.js
     departamentoRoutes.js
     usuarioRoutes.js
-    indexRoutes.js
+    indexRoutes.main
