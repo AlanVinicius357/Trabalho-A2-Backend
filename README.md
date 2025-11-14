@@ -16,6 +16,7 @@ Padronização de Nomes para Arquivos
     frequenciaController.js
     departamentoController.js
     usuarioController.js
+
 /models
     alunoModel.js
     professorModel.js
@@ -28,6 +29,18 @@ Padronização de Nomes para Arquivos
     departamentoModel.js
     usuarioModel.js
 
+/validators
+    alunoValidatoes.js
+    professorValidatoes.js
+    cursoValidatoes.js
+    turmaValidatoes.js
+    disciplinaValidatoes.js
+    matriculaValidatoes.js
+    notaValidatoes.js
+    frequenciaValidatoes.js
+    departamentoValidatoes.js
+    usuarioValidatoes.js
+    indexValidatoes.js
 /routes
     alunoRoutes.js
     professorRoutes.js
