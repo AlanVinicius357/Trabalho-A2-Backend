@@ -41,16 +41,5 @@ Padronização de Nomes para Arquivos
     departamentoValidatoes.js
     usuarioValidatoes.js
     indexValidatoes.js
-/routes
-    alunoRoutes.js
-    professorRoutes.js
-    cursoRoutes.js
-    turmaRoutes.js
-    disciplinaRoutes.js
-    matriculaRoutes.js
-    notaRoutes.js
-    frequenciaRoutes.js
-    departamentoRoutes.js
-    usuarioRoutes.js
-    indexRoutes.main
+
 
