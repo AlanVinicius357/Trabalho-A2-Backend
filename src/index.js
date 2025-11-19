@@ -24,7 +24,8 @@ mongoose.connect(url)
 
 // controladores e rotas
 
-
+const notaController = require('./controllers/notaController');
+app.use(notaController);
 
 app.listen(3000, () => {
   console.log("Aplicação rodando em http://localhost:3000")
