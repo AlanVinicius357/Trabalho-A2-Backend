@@ -34,7 +34,7 @@ router.put('/cursos/:id', validarId, validarAtualizacaoCurso, async (req, res) =
 router.delete('/cursos/:id', validarId, async (req, res) => {
   const cursoDeletado = await cursoModel.findByIdAndDelete(req.params.id);
   if (!cursoDeletado) {
-    return res.status(404).json({ error: 'Funcionário não encontrado' });
+    return res.status(404).json({ error: 'Curso não encontrado' });
   }
   res.status(204).send();
 });
