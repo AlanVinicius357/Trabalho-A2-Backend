@@ -84,7 +84,6 @@
 
 # Exemplos de requisições
 
-    1. Alunos
     GET /alunos
 
     Resposta
