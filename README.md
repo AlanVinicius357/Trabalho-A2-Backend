@@ -1,27 +1,27 @@
 # Trabalho-A2-Backend
-    <p>Sistema Acadêmico – API Backend</p>
+    Sistema Acadêmico – API Backend
 
 # Tecnologias Utilizadas
-    Node.js <br />
-    Express.js <br />
-    MongoDB + Mongoose <br />
-    Yup  <br />
-    Nodemon  <br />
-    Dotenv  <br />
+    Node.js 
+    Express.js 
+    MongoDB + Mongoose 
+    Yup  
+    Nodemon  
+    Dotenv  
 
 # Descrição do Sistema
-    <p>Este sistema acadêmico oferece uma estrutura completa para gerenciamento escolar/universitário.
-    Ele contempla os fluxos principais:<p/>
+    Este sistema acadêmico oferece uma estrutura completa para gerenciamento escolar/universitário.
+    Ele contempla os fluxos principais:
 
-        Cadastro e gerenciamento de alunos <br />
-        Cadastro de professores <br />
-        Criação e administração de cursos <br />
-        Controle de disciplinas <br />
-        Organização de turmas <br />
-        Registro de notas <br />
-        Registro de frequência <br />
-        Controle de matrículas <br />
-        Gerenciamento de usuários do sistema (aluno/professor/admin) <br />
+        Cadastro e gerenciamento de alunos 
+        Cadastro de professores 
+        Criação e administração de cursos 
+        Controle de disciplinas 
+        Organização de turmas 
+        Registro de notas 
+        Registro de frequência 
+        Controle de matrículas 
+        Gerenciamento de usuários do sistema (aluno/professor/admin) 
 
 # Estrutura de Pastas da API
     /controllers
