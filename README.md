@@ -83,5 +83,118 @@
     /departamentos
     /usuarios
 
+# Exemplos de requisições
+
+    1. Alunos
+    GET /alunos
+
+    Resposta
+        {
+            "idAluno": "67a1e5c87a03",
+            "nomeCompleto": "João da Silva",
+            "cpf": "12345678900",
+            "email": "joao@email.com",
+            "telefone": "99999-0000",
+            "endereco": "Rua A, 123",
+            "status": true
+        }
+
+    GET /alunos/:id
+
+    Resposta
+        {
+            "idAluno": "67a1e5c87a03",
+            "nomeCompleto": "João da Silva",
+            "cpf": "12345678900",
+            "email": "joao@email.com",
+            "telefone": "99999-0000",
+            "endereco": "Rua A, 123",
+            "status": true
+        }
+
+    POST /alunos
+
+    Requisição    
+        {
+            "nomeCompleto": "Maria Oliveira",
+            "cpf": "98765432100",
+            "email": "maria@email.com",
+            "telefone": "98888-1111",
+            "endereco": "Av Central, 500",
+            "status": true
+        }
+    Resposta
+        {
+            "message": "Aluno criado com sucesso",
+            "idAluno": "67a1ffc72a11"
+        }
+
+    PUT /alunos/:id  
+
+    Requisição
+        {
+            "telefone": "90000-1234",
+            "status": false
+        }
+
+    POST /professores
+
+    Requisição
+        {
+            "nomeCompleto": "Carlos Mendes",
+            "cpf": "12312312312",
+            "email": "carlos@escola.com",
+            "telefone": "98888-7777",
+            "formacao": "Mestre em Matemática",
+            "idDepartamentos": "6799bb21213aa"
+        }
+    Resposta  
+        {
+            "message": "Professor criado com sucesso",
+        }  
+
+
 # Diagrama Entidade-Relacionamento
 ![Diagrama](./src/image/DiagramaEntidadeRelacionamento.jpg)
+
+# Instalação e Configuração
+## 1. Clonar o repositório
+
+    git clone [Linl do Repositório](https://github.com/AlanVinicius357/Trabalho-A2-Backend)
+
+## 2. Instalar dependências
+
+    npm install
+
+## 3. Criar arquivo .env
+ 
+    DB_HOST = ###
+    DB_USER = ###
+    DB_PASS = ###
+    DB_NAME = ###
+
+## 4. Rodar o servidor
+
+    npm start
+                
+# Comunicação com o Banco de Dados
+### O sistema utiliza o Mongoose para conectar com o MongoDB
+
+    const mongoose = require('mongoose')
+    const dotenv = require('dotenv').config()
+
+    const DB_HOST = process.env.DB_HOST
+    const DB_USER = process.env.DB_USER
+    const DB_PASS = process.env.DB_PASS
+    const DB_NAME = process.env.DB_NAME
+
+    const url = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`
+
+    mongoose.connect(url)
+    .then(() => {
+        console.log("Conectado ao MongoDB")
+    })
+    .catch(err => {
+        console.log("Erro ao conectar no banco MongoDB: ", err)
+    })
+
