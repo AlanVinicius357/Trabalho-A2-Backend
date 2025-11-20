@@ -59,7 +59,6 @@
         frequenciaValidators.js
         departamentoValidators.js
         usuarioValidators.js
-        indexValidators.js
 
 # Endpoints da API
 
