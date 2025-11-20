@@ -164,7 +164,7 @@
 
 ## 2. Instalar dependências
 
-    npm install
+    npm install express nodemon mongoose dotenv yup
 
 ## 3. Criar arquivo .env
  
@@ -173,7 +173,13 @@
     DB_PASS = ###
     DB_NAME = ###
 
-## 4. Rodar o servidor
+## 6. Configure o script de inicialização no package.json :
+
+    "scripts": {
+    "start": "nodemon src/index.js"
+    }
+
+## 5. Rodar o servidor
 
     npm start
                 
