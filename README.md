@@ -160,7 +160,7 @@
 # Instalação e Configuração
 ## 1. Clonar o repositório
 
-    git clone [Linl do Repositório](https://github.com/AlanVinicius357/Trabalho-A2-Backend)
+    git clone [Link do Repositório](https://github.com/AlanVinicius357/Trabalho-A2-Backend)
 
 ## 2. Instalar dependências
 
