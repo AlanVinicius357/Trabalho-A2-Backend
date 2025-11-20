@@ -27,6 +27,13 @@ mongoose.connect(url)
 const notaController = require('./controllers/notaController');
 app.use(notaController);
 
+const usuarioController = require('./controllers/usuarioController');
+app.use(usuarioController);
+
+const departamentoController = require('./controllers/departamentoController');
+app.use(departamentoController);
+
+// iniciar servidor
 app.listen(3000, () => {
   console.log("Aplicação rodando em http://localhost:3000")
 })
