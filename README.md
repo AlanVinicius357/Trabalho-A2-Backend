@@ -173,7 +173,7 @@
     DB_PASS = ###
     DB_NAME = ###
 
-## 6. Configure o script de inicialização no package.json :
+## 4. Configure o script de inicialização no package.json :
 
     "scripts": {
     "start": "nodemon src/index.js"
