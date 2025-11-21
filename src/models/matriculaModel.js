@@ -12,7 +12,10 @@ const schema = new mongoose.Schema({
         ref: 'Turma',
         required: true
     },
-
+    dataMatricula: {
+        type: Date,
+        required: true
+    },
     
     status: {
         type: String,
