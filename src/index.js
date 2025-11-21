@@ -39,6 +39,12 @@ app.use(disciplinaController);
 const frequenciaController = require('./controllers/frequenciaController');
 app.use(frequenciaController);
 
+const alunoController = require('./controllers/alunoController');
+app.use(alunoController);
+
+const matriculaController = require('./controllers/matriculaController');
+app.use(matriculaController);
+
 // iniciar servidor
 app.listen(3000, () => {
   console.log("Aplicação rodando em http://localhost:3000")
