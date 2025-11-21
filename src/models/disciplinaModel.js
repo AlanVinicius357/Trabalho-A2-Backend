@@ -19,7 +19,7 @@ const disciplinaSchema = new mongoose.Schema({
     ref: 'Professor',
     required: true
   },
-  ativo: {
+  ativa: {
     type: Boolean,
     default: true
   }

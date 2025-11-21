@@ -6,12 +6,8 @@ const frequenciaSchema = new mongoose.Schema({
     ref: 'Aluno',
     required: true
   },
-  disciplina: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Disciplina',
-    required: true
-  },
-  data: {
+
+  dataAula: {
     type: Date,
     required: true
   },
@@ -19,9 +15,15 @@ const frequenciaSchema = new mongoose.Schema({
     type: Boolean,
     required: true
   },
-  observacao: {
-    type: String,
-    default: ''
+  disciplina: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Disciplina',
+    required: true
+  },
+  turma: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Turma',
+    required: true
   }
 });
 

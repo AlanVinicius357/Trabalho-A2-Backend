@@ -6,7 +6,7 @@ const disciplinaSchema = yup.object().shape({
   cargaHoraria: yup
     .number()
     .required('A carga horária é obrigatória!'),
-  ativo: yup.boolean().required('O status é obrigatório!'),
+  ativa: yup.boolean().required('O status é obrigatório!'),
 
   // refs
   curso: yup

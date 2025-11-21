@@ -19,6 +19,8 @@ value => mongoose.Types.ObjectId.isValid(value)
 status: yup.string()
 .required('O status é obrigatório!')
 .oneOf(['ativa', 'trancada', 'cancelada'], 'Status inválido'),
+
+dataMatricula: yup.date("Data de matrícula inválida")
 });
 
 async function validarMatricula(req, res, next) {
@@ -48,6 +50,8 @@ value => !value || mongoose.Types.ObjectId.isValid(value)
 status: yup.string()
 .nullable()
 .oneOf(['ativa', 'trancada', 'cancelada'], 'Status inválido'),
+
+dataMatricula: yup.date("Data de matrícula inválida")
 });
 
 async function validarAtualizacaoMatricula(req, res, next) {

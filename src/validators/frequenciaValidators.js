@@ -1,5 +1,6 @@
 const { default: mongoose } = require('mongoose');
 const yup = require('yup');
+const turmaModel = require('../models/turmaModel');
 
 const frequenciaSchema = yup.object().shape({
   aluno: yup
@@ -20,7 +21,7 @@ const frequenciaSchema = yup.object().shape({
       value => mongoose.Types.ObjectId.isValid(value)
     ),
 
-  data: yup
+  dataAula: yup
     .date()
     .required('A data é obrigatória!'),
 
@@ -28,9 +29,14 @@ const frequenciaSchema = yup.object().shape({
     .boolean()
     .required('O status de presença é obrigatório!'),
 
-  observacao: yup
+  turma: yup
     .string()
-    .nullable(),
+    .required('A turma é obrigatória!')
+    .test(
+      'idValidator',
+      'ID de turma inválido',
+      value => mongoose.Types.ObjectId.isValid(value)
+    ),
 });
 
 async function validarFrequencia(req, res, next) {
@@ -61,9 +67,16 @@ const frequenciaSchemaAtualizacao = yup.object().shape({
       value => !value || mongoose.Types.ObjectId.isValid(value)
     ),
 
-  data: yup.date(),
+  dataAula: yup.date(),
   presenca: yup.boolean(),
-  observacao: yup.string(),
+  turma: yup
+    .string()
+    .nullable()
+    .test(
+      'idValidator',
+      'ID de turma inválido',
+      value => !value || mongoose.Types.ObjectId.isValid(value)
+    ),
 });
 
 async function validarAtualizacaoFrequencia(req, res, next) {
