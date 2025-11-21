@@ -48,11 +48,12 @@ app.use(matriculaController);
 const turmaController = require('./controllers/turmaController');
 app.use(turmaController);
 
+const cursoController = require('./controllers/cursoController');
+app.use(cursoController);
+
 const professorController = require('./controllers/professorController');
 app.use(professorController);
 
-const cursoController = require('./controllers/cursoController');
-app.use(cursoController);
 
 
 // iniciar servidor
