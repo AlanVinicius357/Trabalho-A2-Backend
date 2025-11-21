@@ -23,7 +23,6 @@ mongoose.connect(url)
   })
 
 // controladores e rotas
-
 const notaController = require('./controllers/notaController');
 app.use(notaController);
 
@@ -32,6 +31,13 @@ app.use(usuarioController);
 
 const departamentoController = require('./controllers/departamentoController');
 app.use(departamentoController);
+
+// ➕ ***ADICIONADO AGORA***
+const disciplinaController = require('./controllers/disciplinaController');
+app.use(disciplinaController);
+
+const frequenciaController = require('./controllers/frequenciaController');
+app.use(frequenciaController);
 
 // iniciar servidor
 app.listen(3000, () => {
