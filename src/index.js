@@ -45,6 +45,15 @@ app.use(alunoController);
 const matriculaController = require('./controllers/matriculaController');
 app.use(matriculaController);
 
+const turmaController = require('./controllers/turmaController');
+app.use(turmaController);
+
+const professorController = require('./controllers/professorController');
+app.use(professorController);
+
+const cursoController = require('./controllers/cursoController');
+app.use(cursoController);
+
 
 // iniciar servidor
 app.listen(3000, () => {
