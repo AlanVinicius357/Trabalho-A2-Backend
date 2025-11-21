@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema(
     {
-        nome: {Type: String, required: true},
-        anoLetivo: {Type: Number, required: true},
-        semestre: {Type: String, required: true},
-        ativo: {Type: String, required: true},
+        nome: {type: String, required: true},
+        anoLetivo: {type: Number, required: true},
+        semestre: {type: String, required: true},
+        ativo: {type: String, required: true},
 
         //refs
         curso: {

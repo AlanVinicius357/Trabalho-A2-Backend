@@ -11,11 +11,11 @@ router.get('/cursos', async (req, res) => {
 });
 
 router.get('/cursos/:id', validarId, async (req, res) => {
-  const curso = await cursoModel.findById(req.params.id).populate(['departamento']);
-  if (!curso) {
+  const cursos = await cursoModel.findById(req.params.id).populate(['departamento']);
+  if (!cursos) {
     return res.status(404).json({ error: 'Curso não encontrado' });
   }
-  res.json(Curso);
+  res.json(cursos);
 });
 
 router.post('/cursos', validarCurso, async (req, res) => {
