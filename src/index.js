@@ -54,6 +54,7 @@ app.use(professorController);
 const cursoController = require('./controllers/cursoController');
 app.use(cursoController);
 
+
 // iniciar servidor
 app.listen(3000, () => {
   console.log("Aplicação rodando em http://localhost:3000")

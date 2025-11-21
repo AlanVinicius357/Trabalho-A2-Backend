@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const matriculaModel = require('../models/matriculaModel');
-const { validarMatricula } = require('../validators/matriculaValidator');
+const { validarMatricula } = require('../validators/matriculaValidators');
 const { validarId } = require('../validators/IDValidator');
 
 router.get('/matriculas', async (req, res) => {
