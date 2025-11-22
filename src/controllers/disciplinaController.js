@@ -7,13 +7,13 @@ const { validarId } = require('../validators/IDValidator');
 
 // GET todas as disciplinas
 router.get('/disciplinas', async (req, res) => {
-  const disciplinas = await Disciplina.find().populate(['professorId']);
+  const disciplinas = await Disciplina.find().populate(['professor']);
   res.json(disciplinas);
 });
 
 // GET disciplina por ID
 router.get('/disciplinas/:id', validarId, async (req, res) => {
-  const disciplina = await Disciplina.findById(req.params.id).populate(['professorId']);
+  const disciplina = await Disciplina.findById(req.params.id).populate(['professor']);
   if (!disciplina) {
     return res.status(404).json({ error: 'Disciplina não encontrada' });
   }

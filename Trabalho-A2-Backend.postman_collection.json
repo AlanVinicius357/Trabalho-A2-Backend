@@ -1,0 +1,787 @@
+{
+	"info": {
+		"_postman_id": "d9123e57-d563-477a-9fb9-41939d2e9097",
+		"name": "Trabalho-A2-Backend",
+		"description": "Sistema Acadêmico - API Backend\n\nTecnologias Utilizadas: Node.js, Express.js, MongoDB + Mongoose, Yup, Nodemon e Dotenv.\n\nO objetivo deste sistema é fornecer uma API completa, organizada e escalável para o gerenciamento acadêmico de uma instituição de ensino.  \nA plataforma permite controlar de forma integrada alunos, professores, cursos, disciplinas, turmas, matrículas, notas, frequência e usuários, oferecendo uma base sólida para sistemas web ou mobile.\n\nURL: [http://localhost:3000](http://localhost:3000)\n\nAutores: Alan Vinicius, Luan Barbosa, Wendel Ferreira, Gabriel Francisco  \ne Gabriel Emídio\n\nEste sistema acadêmico oferece uma estrutura completa para gerenciamento escolar/universitário.  \nEle contempla os fluxos principais:  \nCadastro e gerenciamento de alunos  \nCadastro de professores  \nCriação e administração de cursos  \nControle de disciplinas  \nOrganização de turmas  \nRegistro de notas  \nRegistro de frequência  \nControle de matrículas  \nGerenciamento de usuários do sistema (aluno/professor/admin)\n\nDocumentação das pastas\n\n1. Alunos  \n    Descrição: Gerencia os alunos cadastrados no sistema.  \n    Campos  \n    nomeCompleto  \n    cpf  \n    email  \n    telefone  \n    endereço  \n    status\n    \n    Endpoints  \n    GET /alunos  \n    GET /alunos/:id  \n    POST /alunos  \n    PUT /alunos/:id  \n    DELETE /alunos/:id\n    \n\nProfessores  \nDescrição: Gerencia os professores da instituição.  \nCampos  \nnomeCompleto  \ncpf  \nemail  \ntelefone  \nformação  \nidDepartamentos\n\nEndpoints  \nGET /professores  \nGET /professores/:id  \nPOST /professores  \nPUT /professores/:id  \nDELETE /professores/:id\n\nCursos  \nDescrição: Gerencia os cursos da instituição.  \nCampos  \nnome  \ndescricao  \ncargaHorariaTotal  \nmodalidade  \nativo  \nidDepartamentos\n\nEndpoints  \nGET /cursos  \nGET /cursos/:id  \nPOST /cursos  \nPUT /cursos/:id  \nDELETE /cursos/:id\n\nDisciplinas  \nDescrição: Gerencia as disciplinas dos cursos.  \nCampos  \nnome  \ncargaHoraria  \nativa  \nidCurso  \nidProfessor\n\nEndpoints  \nGET /disciplinas  \nGET /disciplinas/:id  \nPOST /disciplinas  \nPUT /disciplinas/:id  \nDELETE /disciplinas/:id\n\nTurmas  \nDescrição: Gerencia as turmas da instituição.  \nCampos  \nnome  \nanoLetivo  \nsemestre  \nativo  \nidCurso  \nidProfessor\n\nEndpoints  \nGET /turmas  \nGET /turmas/:id  \nPOST /turmas  \nPUT /turmas/:id  \nDELETE /turmas/:id\n\nMatrículas  \nDescrição: Controla as matrículas de alunos em turmas.  \nCampos  \ndataMatricula  \nstatus  \nidAluno  \nidCurso  \nidTurma\n\nEndpoints  \nGET /matriculas  \nGET /matriculas/:id  \nPOST /matriculas  \nPUT /matriculas/:id  \nDELETE /matriculas/:id\n\nNotas  \nDescrição: Registra as notas dos alunos.  \nCampos  \nnota01  \nnota02  \nnotaFinal  \nidAluno  \nidDisciplina  \nidTurma\n\nEndpoints  \nGET /notas  \nGET /notas/:id  \nPOST /notas  \nPUT /notas/:id  \nDELETE /notas/:id\n\nFrequências  \nDescrição: Controla a presença dos alunos.  \nCampos  \ndataAula  \npresença  \nidAluno  \nidDisciplina  \nidTurma\n\nEndpoints  \nGET /frequencias  \nGET /frequencias/:id  \nPOST /frequencias  \nPUT /frequencias/:id  \nDELETE /frequencias/:id\n\nDepartamentos  \nDescrição: Gerencia os departamentos da instituição.  \nCampos  \nnome  \ndescricao  \nativo\n\nEndpoints  \nGET /departamentos  \nGET /departamentos/:id  \nPOST /departamentos  \nPUT /departamentos/:id  \nDELETE /departamentos/:id\n\nUsuários  \nDescrição: Gerencia os usuários do sistema.  \nCampos  \nnome  \nsenha  \ntipoUsuario  \nativo  \nidAluno  \nidProfessor\n\nEndpoints  \nGET /usuarios  \nGET /usuarios/:id  \nPOST /usuarios  \nPUT /usuarios/:id  \nDELETE /usuarios/:id\n\nDescrição detalhada do endpoint  \n📁 Pasta: Alunos  \nGET /alunos\n\nRetorna todos os alunos cadastrados.  \nStatus:\n\n200 – Lista retornada\n\n500 – Erro ao consultar alunos  \nGET /alunos/:id\n\nBusca um aluno pelo ID.  \nStatus:\n\n200 – Aluno encontrado\n\n400 – ID inválido\n\n404 – Aluno não encontrado\n\n500 – Erro ao consultar aluno  \nPOST /alunos\n\nCria um novo aluno.  \nStatus:\n\n201 – Aluno criado\n\n400 – Dados inválidos\n\n500 – Erro ao salvar novo aluno  \nPUT /alunos/:id\n\nAtualiza os dados de um aluno.  \nStatus:\n\n200 – Atualizado\n\n400 – ID inválido ou dados inválidos\n\n404 – Aluno não encontrado\n\n500 – Erro ao atualizar  \nDELETE /alunos/:id\n\nRemove um aluno.  \nStatus:\n\n204 – Removido\n\n400 – ID inválido\n\n404 – Aluno não encontrado\n\n500 – Erro ao remover\n\n📁 Pasta: Cursos  \nGET /cursos\n\nLista todos os cursos cadastrados.  \nStatus:\n\n200 – Lista retornada\n\n500 – Erro ao consultar cursos  \nGET /cursos/:id\n\nBusca um curso pelo ID.  \nStatus:\n\n200 – Curso encontrado\n\n400 – ID inválido\n\n404 – Curso não encontrado\n\n500 – Erro ao consultar curso  \nPOST /cursos\n\nCria um novo curso.  \nStatus:\n\n201 – Curso criado\n\n400 – Dados inválidos\n\n500 – Erro ao salvar curso  \nPUT /cursos/:id\n\nAtualiza um curso existente.  \nStatus:\n\n200 – Curso atualizado\n\n400 – ID inválido ou dados inválidos\n\n404 – Curso não encontrado\n\n500 – Erro ao atualizar curso  \nDELETE /cursos/:id\n\nRemove um curso.  \nStatus:\n\n204 – Curso removido\n\n400 – ID inválido\n\n404 – Curso não encontrado\n\n500 – Erro ao remover curso\n\n📁 Pasta: Departamentos  \nGET /departamentos\n\nLista todos os departamentos cadastrados.  \nStatus:\n\n200 – Lista retornada\n\n500 – Erro ao consultar departamentos  \nGET /departamentos/:id\n\nBusca um departamento pelo ID.  \nStatus:\n\n200 – Departamento encontrado\n\n400 – ID inválido\n\n404 – Departamento não encontrado\n\n500 – Erro ao consultar departamento  \nPOST /departamentos\n\nCria um novo departamento.  \nStatus:\n\n201 – Departamento criado\n\n400 – Dados inválidos\n\n500 – Erro ao salvar departamento  \nPUT /departamentos/:id\n\nAtualiza um departamento.  \nStatus:\n\n200 – Departamento atualizado\n\n400 – ID inválido ou dados inválidos\n\n404 – Departamento não encontrado\n\n500 – Erro ao atualizar departamento  \nDELETE /departamentos/:id\n\nRemove um departamento.  \nStatus:\n\n204 – Departamento removido\n\n400 – ID inválido\n\n404 – Departamento não encontrado\n\n500 – Erro ao remover departamento\n\n📁 Pasta: Disciplinas  \nGET /disciplinas\n\nLista todas as disciplinas cadastradas.  \nStatus:\n\n200 – Lista retornada\n\n500 – Erro ao consultar disciplinas  \nGET /disciplinas/:id\n\nBusca uma disciplina pelo ID.  \nStatus:\n\n200 – Disciplina encontrada\n\n400 – ID inválido\n\n404 – Disciplina não encontrada\n\n500 – Erro ao consultar disciplina  \nPOST /disciplinas\n\nCria uma nova disciplina.  \nStatus:\n\n201 – Disciplina criada\n\n400 – Dados inválidos\n\n500 – Erro ao salvar disciplina  \nPUT /disciplinas/:id\n\nAtualiza uma disciplina.  \nStatus:\n\n200 – Disciplina atualizada\n\n400 – ID inválido ou dados inválidos\n\n404 – Disciplina não encontrada\n\n500 – Erro ao atualizar disciplina  \nDELETE /disciplinas/:id\n\nRemove uma disciplina.  \nStatus:\n\n204 – Disciplina removida\n\n400 – ID inválido\n\n404 – Disciplina não encontrada\n\n500 – Erro ao remover disciplina\n\n📁 Pasta: Frequências  \nGET /frequencias\n\nLista todas as frequências registradas.  \nStatus:\n\n200 – Lista retornada\n\n500 – Erro ao consultar frequências  \nGET /frequencias/:id\n\nBusca uma frequência pelo ID.  \nStatus:\n\n200 – Frequência encontrada\n\n400 – ID inválido\n\n404 – Frequência não encontrada\n\n500 – Erro ao consultar frequência  \nPOST /frequencias\n\nCria um registro de frequência.  \nStatus:\n\n201 – Frequência criada\n\n400 – Dados inválidos\n\n500 – Erro ao salvar frequência  \nPUT /frequencias/:id\n\nAtualiza um registro de frequência.  \nStatus:\n\n200 – Frequência atualizada\n\n400 – ID inválido ou dados inválidos\n\n404 – Frequência não encontrada\n\n500 – Erro ao atualizar frequência  \nDELETE /frequencias/:id\n\nRemove um registro de frequência.  \nStatus:\n\n204 – Frequência removida\n\n400 – ID inválido\n\n404 – Frequência não encontrada\n\n500 – Erro ao remover frequência\n\n📁 Pasta: Matrículas  \nGET /matriculas\n\nLista todas as matrículas cadastradas.  \nStatus:\n\n200 – Lista retornada\n\n500 – Erro ao consultar matrículas  \nGET /matriculas/:id\n\nBusca uma matrícula pelo ID.  \nStatus:\n\n200 – Matrícula encontrada\n\n400 – ID inválido\n\n404 – Matrícula não encontrada\n\n500 – Erro ao consultar matrícula  \nPOST /matriculas\n\nCria uma nova matrícula.  \nStatus:\n\n201 – Matrícula criada\n\n400 – Dados inválidos\n\n500 – Erro ao salvar matrícula  \nPUT /matriculas/:id\n\nAtualiza uma matrícula.  \nStatus:\n\n200 – Matrícula atualizada\n\n400 – ID inválido ou dados inválidos\n\n404 – Matrícula não encontrada\n\n500 – Erro ao atualizar matrícula  \nDELETE /matriculas/:id\n\nRemove uma matrícula.  \nStatus:\n\n204 – Matrícula removida\n\n400 – ID inválido\n\n404 – Matrícula não encontrada\n\n500 – Erro ao remover matrícula\n\n📁 Pasta: Notas  \nGET /notas\n\nLista todas as notas cadastradas.  \nStatus:\n\n200 – Lista retornada\n\n500 – Erro ao consultar notas  \nGET /notas/:id\n\nBusca uma nota pelo ID.  \nStatus:\n\n200 – Nota encontrada\n\n400 – ID inválido\n\n404 – Nota não encontrada\n\n500 – Erro ao consultar nota  \nPOST /notas\n\nCria uma nova nota.  \nStatus:\n\n201 – Nota criada\n\n400 – Dados inválidos\n\n500 – Erro ao salvar nota  \nPUT /notas/:id\n\nAtualiza uma nota.  \nStatus:\n\n200 – Nota atualizada\n\n400 – ID inválido ou dados inválidos\n\n404 – Nota não encontrada\n\n500 – Erro ao atualizar nota  \nDELETE /notas/:id\n\nRemove uma nota.  \nStatus:\n\n204 – Nota removida\n\n400 – ID inválido\n\n404 – Nota não encontrada\n\n500 – Erro ao remover nota\n\n📁 Pasta: Professores  \nGET /professores\n\nLista todos os professores cadastrados.  \nStatus:\n\n200 – Lista retornada\n\n500 – Erro ao consultar professores  \nGET /professores/:id\n\nBusca um professor pelo ID.  \nStatus:\n\n200 – Professor encontrado\n\n400 – ID inválido\n\n404 – Professor não encontrado\n\n500 – Erro ao consultar professor  \nPOST /professores\n\nCria um novo professor.  \nStatus:\n\n201 – Professor criado\n\n400 – Dados inválidos\n\n500 – Erro ao salvar professor  \nPUT /professores/:id\n\nAtualiza um professor.  \nStatus:\n\n200 – Professor atualizado\n\n400 – ID inválido ou dados inválidos\n\n404 – Professor não encontrado\n\n500 – Erro ao atualizar professor  \nDELETE /professores/:id\n\nRemove um professor.  \nStatus:\n\n204 – Professor removido\n\n400 – ID inválido\n\n404 – Professor não encontrado\n\n500 – Erro ao remover professor\n\n📁 Pasta: Turmas  \nGET /turmas\n\nLista todas as turmas cadastradas.  \nStatus:\n\n200 – Lista retornada\n\n500 – Erro ao consultar turmas  \nGET /turmas/:id\n\nBusca uma turma pelo ID.  \nStatus:\n\n200 – Turma encontrada\n\n400 – ID inválido\n\n404 – Turma não encontrada\n\n500 – Erro ao consultar turma  \nPOST /turmas\n\nCria uma nova turma.  \nStatus:\n\n201 – Turma criada\n\n400 – Dados inválidos\n\n500 – Erro ao salvar turma  \nPUT /turmas/:id\n\nAtualiza uma turma.  \nStatus:\n\n200 – Turma atualizada\n\n400 – ID inválido ou dados inválidos\n\n404 – Turma não encontrada\n\n500 – Erro ao atualizar turma  \nDELETE /turmas/:id\n\nRemove uma turma.  \nStatus:\n\n204 – Turma removida\n\n400 – ID inválido\n\n404 – Turma não encontrada\n\n500 – Erro ao remover turma\n\n📁 Pasta: Usuários  \nGET /usuarios\n\nLista todos os usuários cadastrados.  \nStatus:\n\n200 – Lista retornada\n\n500 – Erro ao consultar usuários  \nGET /usuarios/:id\n\nBusca um usuário pelo ID.  \nStatus:\n\n200 – Usuário encontrado\n\n400 – ID inválido\n\n404 – Usuário não encontrado\n\n500 – Erro ao consultar usuário  \nPOST /usuarios\n\nCria um novo usuário.  \nStatus:\n\n201 – Usuário criado\n\n400 – Dados inválidos\n\n500 – Erro ao salvar usuário  \nPUT /usuarios/:id\n\nAtualiza um usuário.  \nStatus:\n\n200 – Usuário atualizado\n\n400 – ID inválido ou dados inválidos\n\n404 – Usuário não encontrado\n\n500 – Erro ao atualizar usuário  \nDELETE /usuarios/:id\n\nRemove um usuário.  \nStatus:\n\n204 – Usuário removido\n\n400 – ID inválido\n\n404 – Usuário não encontrado\n\n500 – Erro ao remover usuário",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47515153",
+		"_collection_link": "https://ferreirawendel774-1765361.postman.co/workspace/IESB_Construcao_Backend_2A~f55cbf80-dcc6-4bed-bbea-7440ef1e6432/collection/47515153-d9123e57-d563-477a-9fb9-41939d2e9097?action=share&source=collection_link&creator=47515153"
+	},
+	"item": [
+		{
+			"name": "Alunos",
+			"item": [
+				{
+					"name": "Listar alunos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar aluno",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar aluno",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cursos",
+			"item": [
+				{
+					"name": "Criar curso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Análise e Desenvolvimento de Sistemas\",\r\n  \"descricao\": \"Curso focado em desenvolvimento de software\",\r\n  \"cargaHorariaTotal\": 2400,\r\n  \"modalidade\": \"Presencial\",\r\n  \"ativo\": true,\r\n  \"departamento\": \"691f9c3b2063aba71f281416\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cursos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cursos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cursos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cursos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cursos/6921034c8209eb9baf98fc86",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cursos",
+								"6921034c8209eb9baf98fc86"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Teste\",\r\n  \"descricao\": \"Curso focado em desenvolvimento de software\",\r\n  \"cargaHorariaTotal\": 2400,\r\n  \"modalidade\": \"Presencial\",\r\n  \"ativo\": true,\r\n  \"departamento\": \"691f9c3b2063aba71f281416\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cursos/6921034c8209eb9baf98fc86",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cursos",
+								"6921034c8209eb9baf98fc86"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar curso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Análise e Desenvolvimento de Sistemas\",\r\n  \"descricao\": \"Curso focado em desenvolvimento de software\",\r\n  \"cargaHorariaTotal\": 2400,\r\n  \"modalidade\": \"Presencial\",\r\n  \"ativo\": true,\r\n  \"departamento\": \"691f9c3b2063aba71f281416\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:3000/cursos/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cursos",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Departamento",
+			"item": [
+				{
+					"name": "Cadastrar Departamento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Teste\",\r\n  \"descricao\": \"TestCrud\",\r\n  \"ativo\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/departamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"departamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Departamentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/departamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"departamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Departamentos pelo ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/departamentos/691f9c3b2063aba71f281416",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"departamentos",
+								"691f9c3b2063aba71f281416"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Departamentos",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"TI - Infraestrutura\",\r\n  \"descricao\": \"Equipe especializada em redes, servidores e cloud\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/departamentos/691f9c3b2063aba71f281416",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"departamentos",
+								"691f9c3b2063aba71f281416"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Departamentos",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/departamentos/691f9c3b2063aba71f281416",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"departamentos",
+								"691f9c3b2063aba71f281416"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Disciplinas",
+			"item": [
+				{
+					"name": "Listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Programação Web\",\r\n  \"cargaHoraria\": 80,\r\n  \"curso\": \"6921034c8209eb9baf98fc86\",\r\n  \"professor\": \"675b0a11a1b2c30001d00103\",\r\n  \"ativa\": true\r\n}\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/disciplinas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"disciplinas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Frequencia",
+			"item": [
+				{
+					"name": "listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Matriculas",
+			"item": [
+				{
+					"name": "listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Professores",
+			"item": [
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"_id\": \"675b0a11a1b2c30001d00103\",\r\n  \"nomeCompleto\": \"Ricardo Martins\",\r\n  \"cpf\": \"12345678900\",\r\n  \"email\": \"ricardo.martins@faculdade.com\",\r\n  \"telefone\": \"61999998888\",\r\n  \"formacao\": \"Mestre em Engenharia de Software\",\r\n  \"departamento\": \"691f9c3b2063aba71f281416\"\r\n}\r\n\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:3000/professores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"professores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"_id\": \"675b0a11a1b2c30001d00103\",\r\n  \"nomeCompleto\": \"Ricardo Martins\",\r\n  \"cpf\": \"12345678900\",\r\n  \"email\": \"ricardo.martins@faculdade.com\",\r\n  \"telefone\": \"61999998888\",\r\n  \"formacao\": \"Mestre em Engenharia de Software\",\r\n  \"departamento\": \"691f9c3b2063aba71f281416\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/professores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"professores"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Turmas",
+			"item": [
+				{
+					"name": "listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notas",
+			"item": [
+				{
+					"name": "listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -11,12 +11,12 @@ const disciplinaSchema = new mongoose.Schema({
   },
   curso: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Curso',
+    ref: 'Cursos',
     required: true
   },
   professor: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Professor',
+    ref: 'Professores',
     required: true
   },
   ativa: {

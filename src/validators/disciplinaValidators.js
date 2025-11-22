@@ -6,7 +6,7 @@ const disciplinaSchema = yup.object().shape({
   cargaHoraria: yup
     .number()
     .required('A carga horária é obrigatória!'),
-  ativa: yup.boolean().required('O status é obrigatório!'),
+  
 
   // refs
   curso: yup
@@ -26,6 +26,8 @@ const disciplinaSchema = yup.object().shape({
       'ID de professor inválido',
       value => mongoose.Types.ObjectId.isValid(value)
     ),
+
+  ativo: yup.boolean().default(true),
 });
 
 async function validarDisciplina(req, res, next) {
@@ -40,7 +42,7 @@ async function validarDisciplina(req, res, next) {
 const disciplinaSchemaAtualizacao = yup.object().shape({
   nome: yup.string(),
   cargaHoraria: yup.number(),
-  ativo: yup.boolean(),
+  
 
   curso: yup
     .string()
@@ -59,6 +61,8 @@ const disciplinaSchemaAtualizacao = yup.object().shape({
       'ID de professor inválido',
       value => !value || mongoose.Types.ObjectId.isValid(value)
     ),
+
+  ativo: yup.boolean(),
 });
 
 async function validarAtualizacaoDisciplina(req, res, next) {
