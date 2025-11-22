@@ -5,7 +5,7 @@ const schema = new mongoose.Schema(
         nome: {type: String, required: true},
         anoLetivo: {type: Number, required: true},
         semestre: {type: String, required: true},
-        ativo: {type: String, required: true},
+        ativo: { type: Boolean, default: true },
 
         //refs
         curso: {
