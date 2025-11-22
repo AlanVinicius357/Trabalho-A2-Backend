@@ -6,7 +6,7 @@ const schema = new mongoose.Schema(
     descricao: { type: String, required: true },
     cargaHorariaTotal: { type: Number, required: true },
     modalidade: { type: String, required: true },
-    ativo: { type: Date, required: true },
+    ativo: { type: Boolean, default: true },
 
     //refs
 
