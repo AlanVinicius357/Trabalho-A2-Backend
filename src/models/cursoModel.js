@@ -8,15 +8,12 @@ const schema = new mongoose.Schema(
     modalidade: { type: String, required: true },
     ativo: { type: Boolean, default: true },
 
-    //refs
-
     departamento: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Departamentos',
       required: true
     }
   },
-
   { timestamps: true }
 );
 
